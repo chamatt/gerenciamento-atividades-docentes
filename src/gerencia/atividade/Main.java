@@ -1,9 +1,15 @@
 package gerencia.atividade;
 
+import java.io.*;
+
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println("Initial Commit");
+		
+		// Leitura
+		Arquivos arquivos = new Arquivos(args);
+		
+		
 	}
 
 }
