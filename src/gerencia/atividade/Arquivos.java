@@ -38,16 +38,51 @@ public class Arquivos {
 				orientacaoPos = new File(args[i+1]);
 			}
 			if(args[i] == "--read-only") {
-				orientacaoPos = new File(args[i+1]);
+				writeOnly = true;
 			}
 			if(args[i] == "--write-only") {
-				orientacaoPos = new File(args[i+1]);
+				readOnly = true;
 			}
 		}
 		
 	}
 			
 			
+	public File getDocentes() {
+		return docentes;
+	}
+
+
+	public File getDiscentes() {
+		return discentes;
+	}
+
+
+	public File getProducaoCientifica() {
+		return producaoCientifica;
+	}
+
+
+	public File getCursos() {
+		return cursos;
+	}
+
+
+	public File getDisciplinas() {
+		return disciplinas;
+	}
+
+
+	public File getOrientacaoGraducao() {
+		return orientacaoGraducao;
+	}
+
+
+	public File getOrientacaoPos() {
+		return orientacaoPos;
+	}
+
+
 	public boolean isWriteOnly() {
 		return writeOnly;
 	}
@@ -56,5 +91,9 @@ public class Arquivos {
 		return readOnly;
 	}
 	
+	@Override
+	public String toString() {
+			return "Hello";
 	
+	}
 }
