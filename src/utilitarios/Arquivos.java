@@ -16,31 +16,31 @@ public class Arquivos {
 	
 	public Arquivos(String[] args) {
 		for(int i = 0; i < args.length; i++) {
-			if(args[i] == "-d") {
+			if(args[i].equals("-d")) {
 				docentes = new File(args[i+1]);
 			}
-			if(args[i] == "-a") {
+			if(args[i].equals("-a")) {
 				discentes = new File(args[i+1]);
 			}
-			if(args[i] == "-p") {
+			if(args[i].equals("-p")) {
 				producaoCientifica = new File(args[i+1]);
 			}
-			if(args[i] == "-c") {
+			if(args[i].equals("-c")) {
 				cursos = new File(args[i+1]);
 			}
-			if(args[i] == "-r") {
+			if(args[i].equals("-c")) {
 				didaticoAulas = new File(args[i+1]);
 			}
-			if(args[i] == "-og") {
+			if(args[i].equals("-og")) {
 				orientacaoGraducao = new File(args[i+1]);
 			}
-			if(args[i] == "-op") {
+			if(args[i].equals("-op")) {
 				orientacaoPos = new File(args[i+1]);
 			}
-			if(args[i] == "--read-only") {
+			if(args[i].equals("--read-only")) {
 				writeOnly = true;
 			}
-			if(args[i] == "--write-only") {
+			if(args[i].equals("--write-only")) {
 				readOnly = true;
 			}
 		}

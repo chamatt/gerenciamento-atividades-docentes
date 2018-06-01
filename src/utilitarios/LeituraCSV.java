@@ -30,7 +30,7 @@ public class LeituraCSV {
 	public List<Docente> leDocentes() throws FileNotFoundException {
 		
 		Scanner scanner = null;
-	
+
 		scanner = new Scanner(new FileReader(arquivos.getDocentes()));
 		List<Docente> docentes = new ArrayList<Docente>();
 		while(scanner.hasNextLine()) {

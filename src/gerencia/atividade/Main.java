@@ -50,12 +50,13 @@ public class Main {
 			
 			
 		}
-		catch(IOException e){
-			
+		catch(IOException e)
+		{
+			System.out.println("Erro de I/O");
 		}
 		catch(java.text.ParseException p)
 		{
-			
+			System.out.println("Erro de formatação");
 		}
 	}
 
