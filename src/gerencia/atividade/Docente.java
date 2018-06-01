@@ -2,9 +2,9 @@ package gerencia.atividade;
 
 public class Docente {
 
-	String nome;
-	int codigo;
-	String departamento;
+	private String nome;
+	private int codigo;
+	private String departamento;
 	
 	public Docente(String nome,int codigo,String departamento)
 	{
