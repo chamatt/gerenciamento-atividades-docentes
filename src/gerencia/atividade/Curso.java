@@ -6,7 +6,7 @@ public class Curso {
 		private String nome;
 		private boolean graduacao;
 		
-		public Curso(String nome,int codigo,boolean graduacao) 
+		public Curso(int codigo,String nome,boolean graduacao) 
 		{
 			this.nome = nome;
 			this.codigo = codigo;

@@ -3,13 +3,13 @@ package gerencia.atividade;
 public class ProducaoCientifica {
 
 	private String titulo;
-	private int codigoDocente;
+	private int codigoDoDocente;
 	private boolean qualificada;
 	
-	public ProducaoCientifica(String titulo,int codigoDocente,boolean qualificada) 
+	public ProducaoCientifica(int codigoDoDocente,String titulo,boolean qualificada) 
 	{
 		this.titulo = titulo;
-		this.codigoDocente = codigoDocente;
+		this.codigoDoDocente = codigoDoDocente;
 		this.qualificada = qualificada;
 	}
 }
