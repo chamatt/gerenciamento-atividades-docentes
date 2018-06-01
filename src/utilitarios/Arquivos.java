@@ -28,7 +28,7 @@ public class Arquivos {
 			if(args[i].equals("-c")) {
 				cursos = new File(args[i+1]);
 			}
-			if(args[i].equals("-c")) {
+			if(args[i].equals("-r")) {
 				didaticoAulas = new File(args[i+1]);
 			}
 			if(args[i].equals("-og")) {

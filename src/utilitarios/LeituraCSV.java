@@ -30,8 +30,9 @@ public class LeituraCSV {
 	public List<Docente> leDocentes() throws FileNotFoundException {
 		
 		Scanner scanner = null;
-
+		
 		scanner = new Scanner(new FileReader(arquivos.getDocentes()));
+		scanner.nextLine();
 		List<Docente> docentes = new ArrayList<Docente>();
 		while(scanner.hasNextLine()) {
 			
@@ -55,9 +56,10 @@ public class LeituraCSV {
 		return docentes;
 	}
 	
-	//Discente(<matricula>:int;<nome>:String;<c�digo do curso>:int)
+	
 	public List<Discente> leDiscentes() throws FileNotFoundException{
 		Scanner scanner = new Scanner( new FileReader(arquivos.getDiscentes()));
+		scanner.nextLine();
 		List<Discente> discentes = new ArrayList<Discente>();
 		while(scanner.hasNextLine()) {
 			String[] propriedades = leLinha(scanner);
@@ -73,15 +75,16 @@ public class LeituraCSV {
 		return discentes;
 	}
 	
-	// <c�digo docente>:int;<titulo da publicacao>:String;<qualificada?>:Boolean
 	public List<ProducaoCientifica> leProducoesCientificas() throws FileNotFoundException{
 		Scanner scanner = new Scanner( new FileReader(arquivos.getProducaoCientifica()));
+		scanner.nextLine();
 		List<ProducaoCientifica> producoesCientificas = new ArrayList<ProducaoCientifica>();
 		while(scanner.hasNextLine()) {
 			String[] propriedades = leLinha(scanner);
+			
 			int codigoDocente = Integer.parseInt(propriedades[0]);
 			String tituloDaPublicacao = propriedades[1];
-			boolean qualificada = (propriedades[2] == "X") ? true : false;
+			boolean qualificada = (propriedades.length > 2 && propriedades[2].equals("X")) ? true : false;
 			
 			ProducaoCientifica producaoCientifica = new ProducaoCientifica(codigoDocente, tituloDaPublicacao, qualificada);
 			producoesCientificas.add(producaoCientifica);
@@ -91,17 +94,17 @@ public class LeituraCSV {
 	}
 	
 	
-	//<c�digo do curso>;<nome do curso>;<gradua��o?>;<p�s-gradua��o?> <- FIX THIS, ainda nao sei como sera tratado o construtor desse
 	public List<Curso> leCursos() throws FileNotFoundException{
 		Scanner scanner = new Scanner( new FileReader(arquivos.getCursos()));
+		scanner.nextLine();
+
 		List<Curso> cursos = new ArrayList<Curso>();
 		while(scanner.hasNextLine()) {
 			String[] propriedades = leLinha(scanner);
-			
 			int codigo = Integer.parseInt(propriedades[0]);
 			String nome = propriedades[1];
-			boolean graduacao = (propriedades[2] == "X") ? true : false;
-			boolean posGraduacao = (propriedades[3] == "X") ? true : false;
+			boolean graduacao = (propriedades.length > 2 && propriedades[2].equals("X")) ? true : false;
+			boolean posGraduacao = (propriedades.length > 3 && propriedades[3].equals("X")) ? true : false;
 			
 			Curso curso = new Curso(codigo, nome, graduacao);
 			cursos.add(curso);
@@ -111,9 +114,9 @@ public class LeituraCSV {
 	}
 	
 	
-	//<c�digo>:String;<nome>:String;<c�digo docente>:int;<carga hor�ria semanal>:int;<cargahoraria semestral>:int;<c�digo do curso>:int
 	public List<DidaticoAula> leDidaticoAulas() throws FileNotFoundException{
 		Scanner scanner = new Scanner(new FileReader(arquivos.getDidaticoAulas()));
+		scanner.nextLine();
 		List<DidaticoAula> didaticoAulas = new ArrayList<DidaticoAula>();
 		while(scanner.hasNextLine()) {
 			String[] propriedades = leLinha(scanner);
@@ -136,6 +139,7 @@ public class LeituraCSV {
 	//<c�digo do docente>:int;<matricula do discente>:int;<curso>:int;<carga horario semanal>:int
 	public List<Graduacao> leGraduacoes() throws FileNotFoundException{
 		Scanner scanner = new Scanner( new FileReader(arquivos.getOrientacaoGraducao()));
+		scanner.nextLine();
 		List<Graduacao> graduacoes = new ArrayList<Graduacao>();
 		while(scanner.hasNextLine()) {
 			String[] propriedades = leLinha(scanner);
@@ -156,6 +160,7 @@ public class LeituraCSV {
 	//<c�digo do docente>;<matricula do discente>;<data de ingresso do discente no programa>;<programa de p�s gradua��o>;<carga hor�riasemanal>
 	public List<PosGraduacao> lePosGraduacoes() throws FileNotFoundException, ParseException{
 		Scanner scanner = new Scanner( new FileReader(arquivos.getOrientacaoPos()));
+		scanner.nextLine();
 		List<PosGraduacao> posGraduacoes = new ArrayList<PosGraduacao>();
 		while(scanner.hasNextLine()) {
 			String[] propriedades = leLinha(scanner);
