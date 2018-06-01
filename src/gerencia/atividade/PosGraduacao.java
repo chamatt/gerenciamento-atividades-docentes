@@ -1,5 +1,7 @@
 package gerencia.atividade;
 
+import java.util.Date;
+
 public class PosGraduacao extends Orientacao{
 	
 	Date dataDeIngresso;

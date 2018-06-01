@@ -22,11 +22,11 @@ public class LeituraCSV {
 		String[] propriedades = all.split(";");
 		return propriedades;
 	}
-	
+
 	//Docente(codigo:int, nome:String, departamento:String)
-	public ArrayList<Docente> leDocentes(){
+	public List<Docente> leDocentes(){
 		Scanner scanner = new Scanner( new FileReader(arquivos.getDocentes()));
-		List<Docente> docentes = new ArrayList<Docente>()
+		List<Docente> docentes = new ArrayList<Docente>();
 		while(scanner.hasNextLine()) {
 			String[] propriedades = leLinha(scanner);
 			
@@ -34,21 +34,21 @@ public class LeituraCSV {
 			String nome = propriedades[1];
 			String departamento = propriedades[2];
 			
-			Docente docente = new Docente(codigo, nome, propriedades);
+			Docente docente = new Docente(codigo, nome, departamento);
 			docentes.add(docente);
 		}
 		scanner.close();
 		return docentes;
 	}
 	
-	//Discente(<matricula>:int;<nome>:String;<código do curso>:int)
-	public ArrayList<Discente> leDiscentes(){
+	//Discente(<matricula>:int;<nome>:String;<cï¿½digo do curso>:int)
+	public List<Discente> leDiscentes(){
 		Scanner scanner = new Scanner( new FileReader(arquivos.getDiscentes()));
-		List<Discente> discentes = new ArrayList<Discente>()
+		List<Discente> discentes = new ArrayList<Discente>();
 		while(scanner.hasNextLine()) {
 			String[] propriedades = leLinha(scanner);
 			
-			int matricula = Integer.parseInt(propriedades[0]);
+			long matricula = Integer.parseInt(propriedades[0]);
 			String nome = propriedades[1];
 			int codigoCurso = Integer.parseInt(propriedades[2]);
 			
@@ -59,8 +59,8 @@ public class LeituraCSV {
 		return discentes;
 	}
 	
-	// <código docente>:int;<titulo da publicacao>:String;<qualificada?>:Boolean
-	public ArrayList<ProducaoCientifica> leProducoesCientificas(){
+	// <cï¿½digo docente>:int;<titulo da publicacao>:String;<qualificada?>:Boolean
+	public List<ProducaoCientifica> leProducoesCientificas(){
 		Scanner scanner = new Scanner( new FileReader(arquivos.getProducaoCientifica()));
 		List<ProducaoCientifica> producoesCientificas = new ArrayList<ProducaoCientifica>();
 		while(scanner.hasNextLine()) {
@@ -77,10 +77,10 @@ public class LeituraCSV {
 	}
 	
 	
-	//<código do curso>;<nome do curso>;<graduação?>;<pós-graduação?> <- FIX THIS, ainda nao sei como sera tratado o construtor desse
-	public ArrayList<Curso> leCursos(){
+	//<cï¿½digo do curso>;<nome do curso>;<graduaï¿½ï¿½o?>;<pï¿½s-graduaï¿½ï¿½o?> <- FIX THIS, ainda nao sei como sera tratado o construtor desse
+	public List<Curso> leCursos(){
 		Scanner scanner = new Scanner( new FileReader(arquivos.getCursos()));
-		List<Curso> cursos = new ArrayList<Curso>()
+		List<Curso> cursos = new ArrayList<Curso>();
 		while(scanner.hasNextLine()) {
 			String[] propriedades = leLinha(scanner);
 			
@@ -97,14 +97,14 @@ public class LeituraCSV {
 	}
 	
 	
-	//<código>:String;<nome>:String;<código docente>:int;<carga horária semanal>:int;<cargahoraria semestral>:int;<código do curso>:int
-	public ArrayList<DidaticoAula> leDidaticoAulas(){
+	//<cï¿½digo>:String;<nome>:String;<cï¿½digo docente>:int;<carga horï¿½ria semanal>:int;<cargahoraria semestral>:int;<cï¿½digo do curso>:int
+	public List<DidaticoAula> leDidaticoAulas(){
 		Scanner scanner = new Scanner( new FileReader(arquivos.getDidaticoAulas()));
-		List<DidaticoAula> didaticoAulas = new ArrayList<DidaticoAula>()
+		List<DidaticoAula> didaticoAulas = new ArrayList<DidaticoAula>();
 		while(scanner.hasNextLine()) {
 			String[] propriedades = leLinha(scanner);
 			
-			int codigo = Integer.parseInt(propriedades[0]);
+			String codigo = propriedades[0];
 			String nome = propriedades[1];
 			int codigoDocente = Integer.parseInt(propriedades[2]);
 			int cargaSemanal = Integer.parseInt(propriedades[3]);
@@ -119,10 +119,10 @@ public class LeituraCSV {
 		return didaticoAulas;
 	}
 	
-	//<código do docente>:int;<matricula do discente>:int;<curso>:int;<carga horario semanal>:int
-	public ArrayList<Graduacao> leGraduacoes(){
+	//<cï¿½digo do docente>:int;<matricula do discente>:int;<curso>:int;<carga horario semanal>:int
+	public List<Graduacao> leGraduacoes(){
 		Scanner scanner = new Scanner( new FileReader(arquivos.getGraduacoes()));
-		List<Graduacao> graduacoes = new ArrayList<Graduacao>()
+		List<Graduacao> graduacoes = new ArrayList<Graduacao>();
 		while(scanner.hasNextLine()) {
 			String[] propriedades = leLinha(scanner);
 			
@@ -139,10 +139,10 @@ public class LeituraCSV {
 		return graduacoes;
 	}
 	
-	//<código do docente>;<matricula do discente>;<data de ingresso do discente no programa>;<programa de pós graduação>;<carga horáriasemanal>
-	public ArrayList<PosGraduacao> lePosGraduacoes(){
+	//<cï¿½digo do docente>;<matricula do discente>;<data de ingresso do discente no programa>;<programa de pï¿½s graduaï¿½ï¿½o>;<carga horï¿½riasemanal>
+	public List<PosGraduacao> lePosGraduacoes(){
 		Scanner scanner = new Scanner( new FileReader(arquivos.getPosGraduacoes()));
-		List<PosGraduacao> posGraduacoes = new ArrayList<PosGraduacao>()
+		List<PosGraduacao> posGraduacoes = new ArrayList<PosGraduacao>();
 		while(scanner.hasNextLine()) {
 			String[] propriedades = leLinha(scanner);
 			
@@ -150,7 +150,7 @@ public class LeituraCSV {
 			int matriculaDiscente = Integer.parseInt(propriedades[1]);
 			String sDate = propriedades[2];  
 		    Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);  
-			String programa = propriedades[3]
+			String programa = propriedades[3];
 		    int cargaSemanal = Integer.parseInt(propriedades[4]);
 			
 			
