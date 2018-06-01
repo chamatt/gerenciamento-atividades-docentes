@@ -1,13 +1,13 @@
 package gerencia.atividade;
 
+import java.io.IOException;
 import java.util.List;
-
 import utilitarios.Arquivos;
 import utilitarios.LeituraCSV;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		try {
 			Arquivos arquivos = new Arquivos(args);
 			LeituraCSV leitor = new LeituraCSV(arquivos);
@@ -50,7 +50,11 @@ public class Main {
 			
 			
 		}
-		catch(IOException){
+		catch(IOException e){
+			
+		}
+		catch(java.text.ParseException p)
+		{
 			
 		}
 	}
