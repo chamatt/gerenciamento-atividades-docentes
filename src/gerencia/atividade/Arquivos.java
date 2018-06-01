@@ -96,4 +96,6 @@ public class Arquivos {
 			return "Hello";
 	
 	}
+	
+	System.out.println("fdsf");
 }
