@@ -7,6 +7,9 @@ public class Main {
 		
 		Arquivos arquivos = new Arquivos(args) ;
 		System.out.println(arquivos);
+		
+		
+		System.out.println("Hello World");
 	}
 
 }
