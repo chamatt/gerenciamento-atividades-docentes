@@ -12,4 +12,10 @@ public class Curso {
 			this.codigo = codigo;
 			this.graduacao = graduacao;
 		}
+		
+		@Override
+		public String toString()
+		{
+			return "Curso " + nome + " " + codigo + " " + graduacao;
+		}
 }

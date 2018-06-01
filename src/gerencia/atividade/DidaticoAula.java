@@ -19,5 +19,12 @@ public class DidaticoAula extends Atividade {
 			
 		}
 		
+		@Override
+		public String toString()
+		{
+			return "Didatico-Aula " + nome + " " + codigo + " " +
+					codigoDoDocente + " " + CHSemanal + " " + CHSemestral + " " + codigoDoCurso;
+		}
+		
 
 }

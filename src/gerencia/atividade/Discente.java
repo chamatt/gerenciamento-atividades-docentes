@@ -13,5 +13,11 @@ public class Discente {
 		this.codigoDoCurso = codigoDoCurso;
 		
 	}
+	
+	@Override
+	public String toString()
+	{
+		return "Discente " + nome + " " + matricula + " " + codigoDoCurso;
+	}
 
 }

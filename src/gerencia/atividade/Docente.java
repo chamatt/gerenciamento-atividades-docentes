@@ -12,4 +12,10 @@ public class Docente {
 		this.nome = nome;
 		this.departamento = departamento;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return "Docente " + nome + " " + codigo + " " + departamento;
+	}
 }

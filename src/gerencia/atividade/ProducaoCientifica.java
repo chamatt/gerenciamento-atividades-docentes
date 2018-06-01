@@ -1,7 +1,7 @@
 package gerencia.atividade;
 
 public class ProducaoCientifica {
-
+ 
 	private String titulo;
 	private int codigoDoDocente;
 	private boolean qualificada;
@@ -11,5 +11,12 @@ public class ProducaoCientifica {
 		this.titulo = titulo;
 		this.codigoDoDocente = codigoDoDocente;
 		this.qualificada = qualificada;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "Produção Científica " + titulo + " " + codigoDoDocente + " " +
+				qualificada;
 	}
 }

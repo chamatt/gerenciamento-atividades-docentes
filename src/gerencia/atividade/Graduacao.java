@@ -11,4 +11,11 @@ public class Graduacao extends Orientacao{
 		this.codigoDoCurso = codigoDoCurso;
 		this.CHSemanal = CHSemanal;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return "Graduacao " + codigoDoDocente + " " + matriculaDoDiscente + " " + codigoDoCurso + 
+				" " + CHSemanal;
+	}
 }

@@ -18,6 +18,13 @@ public class PosGraduacao extends Orientacao{
 		this.CHSemanal = CHSemanal;
 		
 	}
+	
+	@Override
+	public String toString()
+	{
+		return "Graduacao " + nomeDoPrograma + " " + codigoDoDocente + " " + matriculaDoDiscente + 
+				" " + dataDeIngresso + " " + CHSemanal;
+	}
 
 	
 }
