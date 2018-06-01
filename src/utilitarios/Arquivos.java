@@ -7,7 +7,7 @@ public class Arquivos {
 	protected File discentes;
 	protected File producaoCientifica;
 	protected File cursos;
-	protected File disciplinas;
+	protected File didaticoAulas;
 	protected File orientacaoGraducao;
 	protected File orientacaoPos;
 	protected boolean writeOnly = false;
@@ -29,7 +29,7 @@ public class Arquivos {
 				cursos = new File(args[i+1]);
 			}
 			if(args[i] == "-r") {
-				disciplinas = new File(args[i+1]);
+				didaticoAulas = new File(args[i+1]);
 			}
 			if(args[i] == "-og") {
 				orientacaoGraducao = new File(args[i+1]);
@@ -68,8 +68,8 @@ public class Arquivos {
 	}
 
 
-	public File getDisciplinas() {
-		return disciplinas;
+	public File getDidaticoAulas() {
+		return didaticoAulas;
 	}
 
 
@@ -96,4 +96,5 @@ public class Arquivos {
 			return "Hello";
 	
 	}
+
 }
