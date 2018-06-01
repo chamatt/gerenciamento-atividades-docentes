@@ -1,4 +1,4 @@
-package gerencia.atividade;
+package utilitarios;
 
 public class LeituraCSV {
 	

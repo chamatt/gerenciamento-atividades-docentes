@@ -1,4 +1,4 @@
-package gerencia.atividade;
+package utilitarios;
 
 import java.io.File;
 
@@ -96,6 +96,4 @@ public class Arquivos {
 			return "Hello";
 	
 	}
-	
-	System.out.println("fdsf");
 }

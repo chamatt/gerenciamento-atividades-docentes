@@ -1,5 +1,6 @@
 package gerencia.atividade;
 
+import utilitarios.Arquivos;
 
 public class Main {
 
@@ -7,9 +8,6 @@ public class Main {
 		
 		Arquivos arquivos = new Arquivos(args) ;
 		System.out.println(arquivos);
-		
-		
-		System.out.println("Hello World");
 	}
 
 }
