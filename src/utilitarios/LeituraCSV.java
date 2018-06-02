@@ -344,5 +344,5 @@ public class LeituraCSV {
 		scanner.close();
 		return posGraduacoes;
 	}
-	int teste;
+	int teste2;
 }
