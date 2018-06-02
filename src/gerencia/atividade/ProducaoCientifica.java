@@ -19,4 +19,14 @@ public class ProducaoCientifica {
 		return "Produção Científica " + titulo + " " + codigoDoDocente + " " +
 				qualificada;
 	}
+	
+	public String getTitulo()
+	{
+		return titulo;
+	}
+	
+	public int getCodigoDoDocente()
+	{
+		return codigoDoDocente;
+	}
 }

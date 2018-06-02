@@ -18,4 +18,19 @@ public class Curso {
 		{
 			return "Curso " + nome + " " + codigo + " " + graduacao;
 		}
+		
+		public int getCodigo()
+		{
+			return codigo;
+		}
+		
+		public boolean getGraduacao()
+		{
+			return graduacao;
+		}
+		
+		public String getNome()
+		{
+			return nome;
+		}
 }

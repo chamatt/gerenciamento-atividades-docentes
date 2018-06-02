@@ -20,4 +20,15 @@ public class Discente {
 		return "Discente " + nome + " " + matricula + " " + codigoDoCurso;
 	}
 
+	public long getMatricula() 
+	{
+		return matricula;
+	}
+	
+	public String getNome()
+	{
+		return nome;
+	}
+	
+
 }

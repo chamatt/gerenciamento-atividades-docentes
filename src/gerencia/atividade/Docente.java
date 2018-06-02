@@ -18,4 +18,9 @@ public class Docente {
 	{
 		return "Docente " + nome + " " + codigo + " " + departamento;
 	}
+	
+	public int getCodigo()
+	{
+		return codigo;
+	}
 }

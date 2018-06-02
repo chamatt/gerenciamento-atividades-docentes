@@ -26,5 +26,18 @@ public class DidaticoAula extends Atividade {
 					codigoDoDocente + " " + CHSemanal + " " + CHSemestral + " " + codigoDoCurso;
 		}
 		
+		public String getCodigo()
+		{
+			return codigo;
+		}
+		
+		public String getNome()
+		{
+			return nome;
+		}
 
+		public int getCodigoDoCurso() 
+		{
+			return codigoDoCurso;
+		}
 }

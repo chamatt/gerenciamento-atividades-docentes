@@ -1,5 +1,6 @@
 package gerencia.atividade;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class PosGraduacao extends Orientacao{
@@ -23,8 +24,12 @@ public class PosGraduacao extends Orientacao{
 	public String toString()
 	{
 		return "Graduacao " + nomeDoPrograma + " " + codigoDoDocente + " " + matriculaDoDiscente + 
-				" " + dataDeIngresso + " " + CHSemanal;
+				" " + new SimpleDateFormat("dd/MM/yyyy").format(dataDeIngresso) + " " + CHSemanal;
 	}
 
+	public Date getDataDeIngresso()
+	{
+		return dataDeIngresso;
+	}
 	
 }

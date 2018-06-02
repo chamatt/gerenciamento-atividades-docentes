@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import utilitarios.Arquivos;
 import utilitarios.LeituraCSV;
+import exceptions.*;
 
 public class Main {
 
@@ -13,11 +14,11 @@ public class Main {
 			LeituraCSV leitor = new LeituraCSV(arquivos);
 			List<Docente> docentes = leitor.leDocentes();
 			List<Discente> discentes = leitor.leDiscentes();
-			List<ProducaoCientifica> producoesCientificas = leitor.leProducoesCientificas();
+			List<ProducaoCientifica> producoesCientificas = leitor.leProducoesCientificas(docentes);
 			List<Curso> cursos = leitor.leCursos();
-			List<DidaticoAula> didaticoAulas = leitor.leDidaticoAulas();
-			List<Graduacao> graduacoes = leitor.leGraduacoes();
-			List<PosGraduacao> posGraduacoes = leitor.lePosGraduacoes();
+			List<DidaticoAula> didaticoAulas = leitor.leDidaticoAulas(docentes,cursos);
+			List<Graduacao> graduacoes = leitor.leGraduacoes(docentes,discentes,cursos);
+			List<PosGraduacao> posGraduacoes = leitor.lePosGraduacoes(docentes,discentes);
 			
 			System.out.println("DOCENTES:");
 			for (Docente docente : docentes) {
@@ -57,6 +58,39 @@ public class Main {
 		catch(java.text.ParseException p)
 		{
 			System.out.println("Erro de formatação");
+		}
+		catch(CodigoDocenteRepetidoException cd)
+		{
+		}
+		catch(MatriculaDiscenteRepetidaException md)
+		{
+		}
+		catch(CodigoCursoRepetidoException cr)
+		{
+		}
+		catch(CodigoDisciplinaRepetidoException cdr)
+		{
+		}
+		catch(CodigoDocenteEmDisciplinaInvalidoException cdi)
+		{
+		}
+		catch(CodigoDocenteEmOrientacaoInvalidoException oi)
+		{
+		}
+		catch(CodigoDocenteEmPublicacaoInvalidoException pi)
+		{
+		}
+		catch(CodigoCursoEmOrientacaoInvalidoException ci)
+		{
+		}
+		catch(CodigoCursoEmDisciplinaInvalidoException di)
+		{
+		}
+		catch(NivelCursoInconsistenteException ni)
+		{
+		}
+		catch(DataIngressoFuturaException df)
+		{
 		}
 	}
 

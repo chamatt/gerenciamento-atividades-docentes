@@ -18,4 +18,9 @@ public class Graduacao extends Orientacao{
 		return "Graduacao " + codigoDoDocente + " " + matriculaDoDiscente + " " + codigoDoCurso + 
 				" " + CHSemanal;
 	}
+	
+	public int getCodigoDoCurso()
+	{
+		return codigoDoCurso;
+	}
 }
