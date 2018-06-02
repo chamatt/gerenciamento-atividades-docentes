@@ -92,6 +92,7 @@ public class Main {
 		catch(DataIngressoFuturaException df)
 		{
 		}
+		int teste;
 	}
 
 }
