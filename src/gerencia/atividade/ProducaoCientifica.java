@@ -29,4 +29,9 @@ public class ProducaoCientifica {
 	{
 		return codigoDoDocente;
 	}
+	
+	public boolean isQualificada()
+	{
+		return qualificada;
+	}
 }

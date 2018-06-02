@@ -2,8 +2,7 @@ package gerencia.atividade;
 
 import java.io.IOException;
 import java.util.List;
-import utilitarios.Arquivos;
-import utilitarios.LeituraCSV;
+import utilitarios.*;
 import exceptions.*;
 
 public class Main {
@@ -49,7 +48,11 @@ public class Main {
 				System.out.println(p);
 			}
 			
+			Relacionamentos relacionamentos = new Relacionamentos();
 			
+			relacionamentos.ConectaInformacoesDocente(docentes, producoesCientificas, graduacoes
+													, posGraduacoes, didaticoAulas);
+			relacionamentos.ConectaInformacoesDiscente(discentes, posGraduacoes);
 		}
 		catch(IOException e)
 		{

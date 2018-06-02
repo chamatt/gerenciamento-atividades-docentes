@@ -1,12 +1,15 @@
 package gerencia.atividade;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class PosGraduacao extends Orientacao{
 	
 	Date dataDeIngresso;
 	String nomeDoPrograma;
+	
 	
 	public PosGraduacao(int codigoDoDocente,int matriculaDoDiscente,
 						Date dataDeIngresso,String nomeDoPrograma,

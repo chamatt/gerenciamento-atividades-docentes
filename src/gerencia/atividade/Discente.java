@@ -5,6 +5,7 @@ public class Discente {
 	private long matricula;
 	private String nome;
 	private int codigoDoCurso;
+	private PosGraduacao posGraduacao;
 	
 	public Discente(long matricula, String nome, int codigoDoCurso) 
 	{
@@ -28,6 +29,11 @@ public class Discente {
 	public String getNome()
 	{
 		return nome;
+	}
+	
+	public void setPosGraduacao(PosGraduacao posGraduacao)
+	{
+		this.posGraduacao = posGraduacao;
 	}
 	
 

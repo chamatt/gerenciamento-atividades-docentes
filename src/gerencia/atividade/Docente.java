@@ -1,5 +1,6 @@
 package gerencia.atividade;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Docente {
@@ -7,9 +8,16 @@ public class Docente {
 	private String nome;
 	private int codigo;
 	private String departamento;
+	private List <DidaticoAula> disciplinas = new ArrayList<>();
+	private List <Graduacao> graduacao = new ArrayList<>() ;
+	private List <PosGraduacao> posGraduacao= new ArrayList<>() ;
+	private List <ProducaoCientifica> producoes= new ArrayList<>();
+	
 	private int totalHorasSemanaisAula = 0;
 	private int totalHorasSemestraisAula = 0;
 	private int totalHorasSemanaisOrientacao = 0;
+	private int numProdQualificadas = 0;
+	private int numProdNaoQualificadas = 0;
 	
 	public Docente(int codigo,String nome,String departamento)
 	{
@@ -29,23 +37,50 @@ public class Docente {
 		return codigo;
 	}
 	
-	public void calcularTotalHoras(List<DidaticoAula> aulas, List<Orientacao> graduacoes, List<Orientacao> posgraduacoes)
+	public void addListaProducao(ProducaoCientifica prod)
 	{
-		for(DidaticoAula d : aulas) {
-			if(codigo == d.getCodigoDocente()) {
+		producoes.add(prod);
+	}
+	
+	public void addListaGraduacao(Graduacao grad)
+	{
+		graduacao.add(grad);
+	}
+	
+	public void addListaPosGraduacao(PosGraduacao pg)
+	{
+		posGraduacao.add(pg);
+	}
+	
+	public void addListaDidaticoAula(DidaticoAula disc)
+	{
+		disciplinas.add(disc);
+	}
+	
+	
+	public void calcularTotalHoras()
+	{
+		for(DidaticoAula d : disciplinas) 
+		{
 				totalHorasSemanaisAula += d.getCHSemanal();
 				totalHorasSemestraisAula += d.getCHSemestral();
-			}
 		}
-		for(Orientacao o : graduacoes) {
-			if(codigo == o.getCodigoDocente()) {
-				totalHorasSemanaisOrientacao += o.getCHSemanal();
-			}
+		for(Graduacao g : graduacao) 
+		{
+				totalHorasSemanaisOrientacao += g.getCHSemanal();
 		}
-		for(Orientacao o : posgraduacoes) {
-			if(codigo == o.getCodigoDocente()) {
-				totalHorasSemanaisOrientacao += o.getCHSemanal();
-			}
+		for(PosGraduacao pg : posGraduacao) 
+		{
+			totalHorasSemanaisOrientacao += pg.getCHSemanal();
+		}
+	}
+	
+	public void calcularProducoesQualificadas()
+	{
+		for(ProducaoCientifica prod: producoes)
+		{
+			if(prod.isQualificada()) numProdQualificadas++;
+			else numProdNaoQualificadas++;
 		}
 	}
 }
