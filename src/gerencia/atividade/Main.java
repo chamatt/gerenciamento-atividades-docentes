@@ -59,40 +59,17 @@ public class Main {
 		{
 			System.out.println("Erro de formatação");
 		}
-		catch(CodigoDocenteRepetidoException cd)
-		{
-		}
-		catch(MatriculaDiscenteRepetidaException md)
-		{
-		}
-		catch(CodigoCursoRepetidoException cr)
-		{
-		}
-		catch(CodigoDisciplinaRepetidoException cdr)
-		{
-		}
-		catch(CodigoDocenteEmDisciplinaInvalidoException cdi)
-		{
-		}
-		catch(CodigoDocenteEmOrientacaoInvalidoException oi)
-		{
-		}
-		catch(CodigoDocenteEmPublicacaoInvalidoException pi)
-		{
-		}
-		catch(CodigoCursoEmOrientacaoInvalidoException ci)
-		{
-		}
-		catch(CodigoCursoEmDisciplinaInvalidoException di)
-		{
-		}
-		catch(NivelCursoInconsistenteException ni)
-		{
-		}
-		catch(DataIngressoFuturaException df)
-		{
-		}
-		int teste;
+		catch(CodigoDocenteRepetidoException cd){}
+		catch(MatriculaDiscenteRepetidaException md){}
+		catch(CodigoCursoRepetidoException cr){}
+		catch(CodigoDisciplinaRepetidoException cdr){}
+		catch(CodigoDocenteEmDisciplinaInvalidoException cdi){}
+		catch(CodigoDocenteEmOrientacaoInvalidoException oi){}
+		catch(CodigoDocenteEmPublicacaoInvalidoException pi){}
+		catch(CodigoCursoEmOrientacaoInvalidoException ci){}
+		catch(CodigoCursoEmDisciplinaInvalidoException di){}
+		catch(NivelCursoInconsistenteException ni){}
+		catch(DataIngressoFuturaException df){}
 	}
 
 }

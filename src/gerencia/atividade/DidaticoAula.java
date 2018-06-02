@@ -40,4 +40,9 @@ public class DidaticoAula extends Atividade {
 		{
 			return codigoDoCurso;
 		}
+		
+		public int getCHSemestral() 
+		{
+			return CHSemestral;
+		}
 }

@@ -9,5 +9,9 @@ public abstract class Atividade {
 	{
 		return codigoDoDocente;
 	}
-
+	
+	public int getCHSemanal() 
+	{
+		return CHSemanal;
+	}
 }
