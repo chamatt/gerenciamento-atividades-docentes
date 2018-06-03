@@ -1,6 +1,7 @@
 package utilitarios;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,7 +23,7 @@ public class EscritaCSV {
 		
 	}
 	
-	public void escrevePAD(List<Docente> docentes, Arquivos arquivos) throws IOException {
+	public void escrevePAD(List<Docente> docentes) throws IOException {
 		File pad = new File("1-pad.csv");
 		FileWriter fwriter = new FileWriter(pad);
 		PrintWriter printer = new PrintWriter(fwriter);
@@ -32,9 +33,9 @@ public class EscritaCSV {
 		};
 		escreveLinha(titulo, printer);
 		Collections.sort(docentes, new PADComparador());
-		for(Docente c: docentes) {
+		/*for(Docente c: docentes) {
 			System.out.println(c);
-		}
+		}*/
 		
 		for(Docente d : docentes) {
 			String[] props = new String[] {
@@ -50,16 +51,58 @@ public class EscritaCSV {
 		
 	}
 	
-	public void escreveRHA(Arquivos arquivos) throws IOException {
+	public void escreveRHA() throws IOException {
 	
 	}
 	
-	public void escreveAlocacao() throws IOException {
+	public void escreveAlocacao(List <DidaticoAula> discs) throws IOException 
+	{
+		File alocacao = new File("3-alocacao.csv");
+		FileWriter fwriter = new FileWriter(alocacao);
+		PrintWriter printer = new PrintWriter(fwriter);
+		
+		String[] titulo = new String[] { "Docente","Código","Nome","Carga Horária Semestral"};
+		escreveLinha(titulo, printer);
+		
+		Collections.sort(discs, new AlocacaoComparador());
+		
+		for(DidaticoAula disc : discs)
+		{
+			String[] props = new String[] {
+					disc.getDocente().getNome(),disc.getCodigo(),
+					disc.getNome(),Integer.toString(disc.getCHSemestral())
+			};
+			
+			escreveLinha(props, printer);
+		}
+		
+		printer.close();
 		
 	}
 	
-	public void escreveDiscentesProGrad() throws IOException {
+	public void escreveDiscentesProGrad(List <Discente> discentes) throws IOException 
+	{
+		File alocacao = new File("4-ppg.csv");
+		FileWriter fwriter = new FileWriter(alocacao);
+		PrintWriter printer = new PrintWriter(fwriter);
 		
+		String[] titulo = new String[] { "Nome do Programa","Data de Ingresso","Matrícula","Nome"};
+		escreveLinha(titulo, printer);
+		
+		Collections.sort(discentes,new PPGComparador());
+		
+		for(Discente discente : discentes)
+		{
+			String[] props = new String[] {
+					discente.getPosGraduacao().getNomeDoPrograma(),
+					new SimpleDateFormat("dd/MM/yyyy").format(discente.getPosGraduacao().getDataDeIngresso()),
+					Long.toString(discente.getMatricula()),
+					discente.getNome() 
+			};
+			escreveLinha(props, printer);
+		}
+		
+		printer.close();
 	}
 	
 }

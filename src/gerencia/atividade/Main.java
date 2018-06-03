@@ -55,7 +55,9 @@ public class Main {
 			relacionamentos.ConectaInformacoesDiscente(discentes, posGraduacoes);
 			
 			EscritaCSV escritor = new EscritaCSV();
-			escritor.escrevePAD(docentes, arquivos);
+			escritor.escrevePAD(docentes);
+			escritor.escreveAlocacao(didaticoAulas);
+			escritor.escreveDiscentesProGrad(discentes);
 		}
 		catch(IOException e)
 		{

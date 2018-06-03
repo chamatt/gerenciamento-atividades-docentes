@@ -35,4 +35,8 @@ public class PosGraduacao extends Orientacao{
 		return dataDeIngresso;
 	}
 	
+	public String getNomeDoPrograma() 
+	{
+		return nomeDoPrograma;
+	}
 }

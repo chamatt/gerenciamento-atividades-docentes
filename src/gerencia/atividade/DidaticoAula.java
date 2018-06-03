@@ -6,6 +6,7 @@ public class DidaticoAula extends Atividade {
 		private String nome;
 		private int CHSemestral;
 		private int codigoDoCurso;
+		private Docente docente;
 		
 		public DidaticoAula(String codigo,String nome,int codigoDoDocente, 
 							int CHSemanal,int CHSemestral, int codigoDoCurso) {
@@ -44,5 +45,15 @@ public class DidaticoAula extends Atividade {
 		public int getCHSemestral() 
 		{
 			return CHSemestral;
+		}
+		
+		public void setDocente(Docente docente)
+		{
+			this.docente = docente;
+		}
+		
+		public Docente getDocente() 
+		{
+			return docente;
 		}
 }

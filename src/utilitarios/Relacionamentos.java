@@ -35,7 +35,10 @@ public class Relacionamentos
 			for (DidaticoAula didaticoAula : discs) 
 			{
 				if(docente.getCodigo() == didaticoAula.getCodigoDocente())
+				{
 					docente.addListaDidaticoAula(didaticoAula);
+					didaticoAula.setDocente(docente);
+				}
 			}
 		}
 		
@@ -61,7 +64,8 @@ public class Relacionamentos
 		{
 			for (PosGraduacao posGraduacao : pgs) 
 			{
-				if(posGraduacao.getMatriculaDoDiscente() == discente.getMatricula());
+				if(posGraduacao.getMatriculaDoDiscente() == discente.getMatricula())
+					discente.setPosGraduacao(posGraduacao);
 			}
 			
 					

@@ -36,5 +36,10 @@ public class Discente {
 		this.posGraduacao = posGraduacao;
 	}
 	
+	public PosGraduacao getPosGraduacao()
+	{
+		return posGraduacao;
+	}
+	
 
 }
