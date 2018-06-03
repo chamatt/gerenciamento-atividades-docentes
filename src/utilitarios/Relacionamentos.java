@@ -48,6 +48,11 @@ public class Relacionamentos
 			}
 		}
 		
+		for(Docente docente : docentes)
+		{
+			docente.calcularProducoesQualificadas();
+			docente.calcularTotalHoras();
+		}
 	}
 	
 	public void ConectaInformacoesDiscente(List <Discente> discentes,List <PosGraduacao> pgs)

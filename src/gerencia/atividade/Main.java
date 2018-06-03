@@ -19,7 +19,7 @@ public class Main {
 			List<Graduacao> graduacoes = leitor.leGraduacoes(docentes,discentes,cursos);
 			List<PosGraduacao> posGraduacoes = leitor.lePosGraduacoes(docentes,discentes);
 			
-			System.out.println("DOCENTES:");
+			/*System.out.println("DOCENTES:");
 			for (Docente docente : docentes) {
 				System.out.println(docente);
 			}
@@ -46,13 +46,16 @@ public class Main {
 			System.out.println("POSGRADUACOES:");
 			for (PosGraduacao p : posGraduacoes) {
 				System.out.println(p);
-			}
+			}*/
 			
 			Relacionamentos relacionamentos = new Relacionamentos();
 			
 			relacionamentos.ConectaInformacoesDocente(docentes, producoesCientificas, graduacoes
 													, posGraduacoes, didaticoAulas);
 			relacionamentos.ConectaInformacoesDiscente(discentes, posGraduacoes);
+			
+			EscritaCSV escritor = new EscritaCSV();
+			escritor.escrevePAD(docentes, arquivos);
 		}
 		catch(IOException e)
 		{

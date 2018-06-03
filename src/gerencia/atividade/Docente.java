@@ -1,7 +1,10 @@
 package gerencia.atividade;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+
+import utilitarios.PADComparador;
 
 public class Docente {
 
@@ -32,6 +35,16 @@ public class Docente {
 		return "Docente " + nome + " " + codigo + " " + departamento;
 	}
 	
+	public String getNome()
+	{
+		return nome;
+	}
+	
+	public String getDepartamento()
+	{
+		return departamento;
+	}
+	
 	public int getCodigo()
 	{
 		return codigo;
@@ -60,6 +73,9 @@ public class Docente {
 	
 	public void calcularTotalHoras()
 	{
+		totalHorasSemanaisAula = 0;
+		totalHorasSemanaisOrientacao = 0;
+		totalHorasSemestraisAula = 0;
 		for(DidaticoAula d : disciplinas) 
 		{
 				totalHorasSemanaisAula += d.getCHSemanal();
@@ -77,10 +93,34 @@ public class Docente {
 	
 	public void calcularProducoesQualificadas()
 	{
+		numProdQualificadas = 0;
+		numProdNaoQualificadas = 0;
 		for(ProducaoCientifica prod: producoes)
 		{
 			if(prod.isQualificada()) numProdQualificadas++;
 			else numProdNaoQualificadas++;
 		}
 	}
+
+	public int getTotalHorasSemanaisAula() {
+		return totalHorasSemanaisAula;
+	}
+
+	public int getTotalAulasSemestraisAula() {
+		return totalHorasSemestraisAula;
+	}
+
+	public int getTotalAulasSemanaisOrientacao() {
+		return totalHorasSemanaisOrientacao;
+	}
+
+	public int getNumProducoesQualificadas() {
+		return numProdQualificadas;
+	}
+
+	public int getNumProducoesNaoQualificadas() {
+		return numProdNaoQualificadas;
+	}
 }
+
+
