@@ -89,9 +89,15 @@ public class EscritaCSV {
 		String[] titulo = new String[] { "Nome do Programa","Data de Ingresso","Matrícula","Nome"};
 		escreveLinha(titulo, printer);
 		
-		Collections.sort(discentes,new PPGComparador());
+		List<Discente> discentesPPG = new ArrayList<Discente>();
+		for(Discente d : discentes) {
+			if(d.getPosGraduacao() != null) discentesPPG.add(d);
+		}
 		
-		for(Discente discente : discentes)
+		
+		Collections.sort(discentesPPG,new PPGComparador());
+		
+		for(Discente discente : discentesPPG)
 		{
 			String[] props = new String[] {
 					discente.getPosGraduacao().getNomeDoPrograma(),

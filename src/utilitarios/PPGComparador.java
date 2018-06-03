@@ -12,8 +12,7 @@ public class PPGComparador implements Comparator<Discente> {
 	{
 		Collator c = Collator.getInstance(new Locale("pt", "BR"));
 		
-		return c.compare(d1.getNome(), d2.getNome());
-		/*if(c.compare(d1.getPosGraduacao().getNomeDoPrograma(),
+		if(c.compare(d1.getPosGraduacao().getNomeDoPrograma(),
 					 d2.getPosGraduacao().getNomeDoPrograma()) == 0)
 		{
 			if(d1.getPosGraduacao().getDataDeIngresso().equals(
@@ -24,12 +23,13 @@ public class PPGComparador implements Comparator<Discente> {
 			
 			if(d1.getPosGraduacao().getDataDeIngresso().before(
 					d2.getPosGraduacao().getDataDeIngresso()))
-					return 1;
-			else return 0;
+					return -1;
+			else return 1;
 		}
 		
 		return c.compare(d1.getPosGraduacao().getNomeDoPrograma(),
-				 d2.getPosGraduacao().getNomeDoPrograma());*/
+				 d2.getPosGraduacao().getNomeDoPrograma());
+		
 		
 	}
 
