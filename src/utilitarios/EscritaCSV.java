@@ -51,8 +51,52 @@ public class EscritaCSV {
 		
 	}
 	
-	public void escreveRHA() throws IOException {
-	
+	public void escreveRHA(List<Curso> cursos) throws IOException {
+		File rha = new File("2-rha.csv");
+		FileWriter fwriter = new FileWriter(rha);
+		PrintWriter printer = new PrintWriter(fwriter);
+		
+		String[] titulo = new String[] { "Departamento","Docente","Cód. Curso","Curso","Horas Semestrais Aula" };
+		escreveLinha(titulo, printer);
+		
+		List<String[]> itensRelatorio = new ArrayList<>();
+		
+		for(Curso curso : cursos)
+		{
+			List<Docente> listaDocentes = curso.getListaDocentes();
+			for(Docente d : listaDocentes) {
+				
+				String nomeDoDepartamento = null;
+				String nomeDoDocente = null;
+				int totalHoras = 0;
+				String codigoDoCurso = Integer.toString(curso.getCodigo());
+				String nomeDoCurso = curso.getNome();
+				
+				for(DidaticoAula dA : d.getDisciplinas()) {
+					if(dA.getCodigoDoCurso() == curso.getCodigo()) {
+						totalHoras += dA.getCHSemestral();
+						nomeDoDepartamento = dA.getDocente().getDepartamento();
+						nomeDoDocente = dA.getDocente().getNome();
+					}
+				}
+				String[] props = new String[] {
+						nomeDoDepartamento, nomeDoDocente, codigoDoCurso,
+						nomeDoCurso, Integer.toString(totalHoras)
+				};
+				
+				itensRelatorio.add(props);
+			}
+			
+			
+		}
+		Collections.sort(itensRelatorio, new RHAComparador());
+		for(String[] item : itensRelatorio) {
+			System.out.printf("%s %s %s %s %s%n", item[0],item[1],item[2],item[3],item[4]);
+			escreveLinha(item, printer);
+		}
+		
+		printer.close();
+		
 	}
 	
 	public void escreveAlocacao(List <DidaticoAula> discs) throws IOException 

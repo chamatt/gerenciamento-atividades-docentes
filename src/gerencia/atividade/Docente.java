@@ -69,8 +69,26 @@ public class Docente {
 	{
 		disciplinas.add(disc);
 	}
+
+
 	
-	
+	public List<DidaticoAula> getDisciplinas() {
+		return disciplinas;
+	}
+
+	public List<Graduacao> getGraduacao() {
+		return graduacao;
+	}
+
+	public List<PosGraduacao> getPosGraduacao() {
+		return posGraduacao;
+	}
+
+	public List<ProducaoCientifica> getProducoes() {
+		return producoes;
+	}
+
+
 	public void calcularTotalHoras()
 	{
 		totalHorasSemanaisAula = 0;

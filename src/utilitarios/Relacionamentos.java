@@ -72,4 +72,20 @@ public class Relacionamentos
 		}
 		
 	}
+	
+	public void ConectaInformacoesCurso(List <Curso> cursos,List <DidaticoAula> didaticoAulas)
+	{
+		for(Curso curso : cursos)
+		{
+			for (DidaticoAula dA: didaticoAulas) 
+			{
+				if(dA.getCodigoDoCurso() == curso.getCodigo())
+					curso.addListaDocentes(dA.getDocente());
+			}
+			
+					
+		}
+		
+	}
+	
 }

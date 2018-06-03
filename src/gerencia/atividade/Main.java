@@ -53,11 +53,12 @@ public class Main {
 			relacionamentos.ConectaInformacoesDocente(docentes, producoesCientificas, graduacoes
 													, posGraduacoes, didaticoAulas);
 			relacionamentos.ConectaInformacoesDiscente(discentes, posGraduacoes);
-			
+			relacionamentos.ConectaInformacoesCurso(cursos, didaticoAulas);
 			EscritaCSV escritor = new EscritaCSV();
 			escritor.escrevePAD(docentes);
 			escritor.escreveAlocacao(didaticoAulas);
 			escritor.escreveDiscentesProGrad(discentes);
+			escritor.escreveRHA(cursos);
 		}
 		catch(IOException e)
 		{
