@@ -1,72 +1,93 @@
 package gerencia.atividade;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.List;
 import utilitarios.*;
 import exceptions.*;
 
 public class Main {
 
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args){
 		try {
 			Arquivos arquivos = new Arquivos(args);
-			LeituraCSV leitor = new LeituraCSV(arquivos);
-			List<Docente> docentes = leitor.leDocentes();
-			List<Discente> discentes = leitor.leDiscentes();
-			List<ProducaoCientifica> producoesCientificas = leitor.leProducoesCientificas(docentes);
-			List<Curso> cursos = leitor.leCursos();
-			List<DidaticoAula> didaticoAulas = leitor.leDidaticoAulas(docentes,cursos);
-			List<Graduacao> graduacoes = leitor.leGraduacoes(docentes,discentes,cursos);
-			List<PosGraduacao> posGraduacoes = leitor.lePosGraduacoes(docentes,discentes);
 			
-			/*System.out.println("DOCENTES:");
-			for (Docente docente : docentes) {
-				System.out.println(docente);
-			}
-			System.out.println("DISCENTES:");
-			for (Discente discente : discentes) {
-				System.out.println(discente);
-			}
-			System.out.println("PRODUCAOCIENTIFICA:");
-			for (ProducaoCientifica p : producoesCientificas) {
-				System.out.println(p);
-			}
-			System.out.println("CURSOS:");
-			for (Curso c : cursos) {
-				System.out.println(c);
-			}
-			System.out.println("DIDATICOAULA:");
-			for (DidaticoAula d : didaticoAulas) {
-				System.out.println(d);
-			}
-			System.out.println("GRADUACOES:");
-			for (Graduacao g : graduacoes) {
-				System.out.println(g);
-			}
-			System.out.println("POSGRADUACOES:");
-			for (PosGraduacao p : posGraduacoes) {
-				System.out.println(p);
-			}*/
+			LeituraCSV leitor;
+			List<Docente> docentes;
+			List<Discente> discentes;
+			List<ProducaoCientifica> producoesCientificas;
+			List<Curso> cursos;
+			List<DidaticoAula> didaticoAulas;
+			List<Graduacao> graduacoes;
+			List<PosGraduacao> posGraduacoes;
 			
-			Relacionamentos relacionamentos = new Relacionamentos();
+			if(arquivos.isWriteOnly()) {
+					ObjectInputStream in = new ObjectInputStream(new FileInputStream("dados.dat"));
+					docentes = (List<Docente>)in.readObject();
+					discentes = (List<Discente>)in.readObject();
+					producoesCientificas = (List<ProducaoCientifica>)in.readObject();
+					cursos = (List<Curso>)in.readObject();
+					didaticoAulas = (List<DidaticoAula>)in.readObject();
+					graduacoes = (List<Graduacao>)in.readObject();
+					posGraduacoes = (List<PosGraduacao>)in.readObject();
+					
+					in.close();
+			}
+			else {
+				leitor = new LeituraCSV(arquivos);
+				docentes = leitor.leDocentes();
+				discentes = leitor.leDiscentes();
+				producoesCientificas = leitor.leProducoesCientificas(docentes);
+				cursos = leitor.leCursos();
+				didaticoAulas = leitor.leDidaticoAulas(docentes,cursos);
+				graduacoes = leitor.leGraduacoes(docentes,discentes,cursos);
+				posGraduacoes = leitor.lePosGraduacoes(docentes,discentes);
+
+				Relacionamentos relacionamentos = new Relacionamentos();
+				
+				relacionamentos.ConectaInformacoesDocente(docentes, producoesCientificas, graduacoes
+														, posGraduacoes, didaticoAulas);
+				relacionamentos.ConectaInformacoesDiscente(discentes, posGraduacoes);
+				relacionamentos.ConectaInformacoesCurso(cursos, didaticoAulas);
+				
+			}
 			
-			relacionamentos.ConectaInformacoesDocente(docentes, producoesCientificas, graduacoes
-													, posGraduacoes, didaticoAulas);
-			relacionamentos.ConectaInformacoesDiscente(discentes, posGraduacoes);
-			relacionamentos.ConectaInformacoesCurso(cursos, didaticoAulas);
-			EscritaCSV escritor = new EscritaCSV();
-			escritor.escrevePAD(docentes);
-			escritor.escreveAlocacao(didaticoAulas);
-			escritor.escreveDiscentesProGrad(discentes);
-			escritor.escreveRHA(cursos);
+			if(arquivos.isReadOnly()) {
+				ObjectOutputStream out = new ObjectOutputStream(new
+				FileOutputStream("dados.dat"));
+				out.writeObject(docentes);
+				out.writeObject(discentes);
+				out.writeObject(producoesCientificas);
+				out.writeObject(cursos);
+				out.writeObject(didaticoAulas);
+				out.writeObject(graduacoes);
+				out.writeObject(posGraduacoes);
+				out.close();
+			}
+			else {
+				
+				EscritaCSV escritor = new EscritaCSV();
+				escritor.escrevePAD(docentes);
+				escritor.escreveAlocacao(didaticoAulas);
+				escritor.escreveDiscentesProGrad(discentes);
+				escritor.escreveRHA(cursos);
+			}
 		}
 		catch(IOException e)
 		{
 			System.out.println("Erro de I/O");
+			e.printStackTrace();
 		}
 		catch(java.text.ParseException p)
 		{
 			System.out.println("Erro de formatação");
+		}
+		catch(ClassNotFoundException cn){
+			System.out.println("Classe não encontrada");
 		}
 		catch(CodigoDocenteRepetidoException cd){}
 		catch(MatriculaDiscenteRepetidaException md){}

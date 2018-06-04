@@ -1,6 +1,8 @@
 package gerencia.atividade;
 
-public class ProducaoCientifica {
+import java.io.Serializable;
+
+public class ProducaoCientifica implements Serializable {
  
 	private String titulo;
 	private int codigoDoDocente;

@@ -1,6 +1,8 @@
 package gerencia.atividade;
 
-public class DidaticoAula extends Atividade {
+import java.io.Serializable;
+
+public class DidaticoAula extends Atividade implements Serializable {
 	
 		private String codigo;
 		private String nome;

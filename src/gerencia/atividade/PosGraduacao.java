@@ -1,11 +1,12 @@
 package gerencia.atividade;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class PosGraduacao extends Orientacao{
+public class PosGraduacao extends Orientacao implements Serializable{
 	
 	Date dataDeIngresso;
 	String nomeDoPrograma;

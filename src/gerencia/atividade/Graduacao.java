@@ -1,6 +1,8 @@
 package gerencia.atividade;
 
-public class Graduacao extends Orientacao{
+import java.io.Serializable;
+
+public class Graduacao extends Orientacao implements Serializable{
 
 	private int codigoDoCurso;
 	

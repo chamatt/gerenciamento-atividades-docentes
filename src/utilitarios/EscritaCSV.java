@@ -91,7 +91,6 @@ public class EscritaCSV {
 		}
 		Collections.sort(itensRelatorio, new RHAComparador());
 		for(String[] item : itensRelatorio) {
-			System.out.printf("%s %s %s %s %s%n", item[0],item[1],item[2],item[3],item[4]);
 			escreveLinha(item, printer);
 		}
 		

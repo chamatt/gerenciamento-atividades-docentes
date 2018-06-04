@@ -38,10 +38,10 @@ public class Arquivos {
 				orientacaoPos = new File(args[i+1]);
 			}
 			if(args[i].equals("--read-only")) {
-				writeOnly = true;
+				readOnly = true;
 			}
 			if(args[i].equals("--write-only")) {
-				readOnly = true;
+				writeOnly = true;
 			}
 		}
 		

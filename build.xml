@@ -54,6 +54,7 @@ programa principal, em modo somente leitura.">
 <arg value="orientagrad.csv" />
 <arg value="-op" />
 <arg value="orientapos.csv" />
+<arg value="--read-only" />
 <classpath>
 <pathelement path="${bin}" />
 </classpath>
@@ -63,20 +64,7 @@ programa principal, em modo somente leitura.">
 <target name="run-write-only" depends="compile" description="Executa o
 programa principal, em modo somente escrita.">
 <java classname="${mainClass}">
-<arg value="-d" />
-<arg value="docentes.csv" />
-<arg value="-a" />
-<arg value="discentes.csv" />
-<arg value="-p" />
-<arg value="producoes.csv" />
-<arg value="-c" />
-<arg value="cursos.csv" />
-<arg value="-r" />
-<arg value="aulas.csv" />
-<arg value="-og" />
-<arg value="orientagrad.csv" />
-<arg value="-op" />
-<arg value="orientapos.csv" />
+<arg value="--write-only" />
 <classpath>
 <pathelement path="${bin}" />
 </classpath>

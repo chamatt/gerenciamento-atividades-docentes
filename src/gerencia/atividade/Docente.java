@@ -1,12 +1,13 @@
 package gerencia.atividade;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 import utilitarios.PADComparador;
 
-public class Docente {
+public class Docente implements Serializable {
 
 	private String nome;
 	private int codigo;

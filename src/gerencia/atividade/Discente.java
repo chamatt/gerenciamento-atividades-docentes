@@ -1,6 +1,8 @@
 package gerencia.atividade;
 
-public class Discente {
+import java.io.Serializable;
+
+public class Discente implements Serializable {
 	
 	private long matricula;
 	private String nome;

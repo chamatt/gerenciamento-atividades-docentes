@@ -1,6 +1,8 @@
 package gerencia.atividade;
 
-public abstract class Orientacao extends Atividade{
+import java.io.Serializable;
+
+public abstract class Orientacao extends Atividade implements Serializable{
 
 	protected int matriculaDoDiscente;
 	
