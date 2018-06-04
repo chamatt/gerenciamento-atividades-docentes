@@ -1,0 +1,1 @@
+Put the "src" and "bin" folders and the "build.xml" file here and run "./test.sh" on the terminal.
