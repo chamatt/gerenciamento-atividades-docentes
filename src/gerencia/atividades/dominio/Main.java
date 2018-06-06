@@ -39,16 +39,16 @@ public class Main {
 			List<PosGraduacao> posGraduacoes;
 
 			if (arquivos.isWriteOnly()) {
-				ObjectInputStream in = new ObjectInputStream(new FileInputStream("dados.dat"));
-				docentes = (List<Docente>) in.readObject();
-				discentes = (List<Discente>) in.readObject();
-				producoesCientificas = (List<ProducaoCientifica>) in.readObject();
-				cursos = (List<Curso>) in.readObject();
-				didaticoAulas = (List<DidaticoAula>) in.readObject();
-				graduacoes = (List<Graduacao>) in.readObject();
-				posGraduacoes = (List<PosGraduacao>) in.readObject();
-
-				in.close();
+				try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("dados.dat"));){
+					docentes = (List<Docente>) in.readObject();
+					discentes = (List<Discente>) in.readObject();
+					producoesCientificas = (List<ProducaoCientifica>) in.readObject();
+					cursos = (List<Curso>) in.readObject();
+					didaticoAulas = (List<DidaticoAula>) in.readObject();
+					graduacoes = (List<Graduacao>) in.readObject();
+					posGraduacoes = (List<PosGraduacao>) in.readObject();
+				}
+				
 			} else {
 				leitor = new LeituraCSV(arquivos);
 				docentes = leitor.leDocentes();
@@ -69,15 +69,16 @@ public class Main {
 			}
 
 			if (arquivos.isReadOnly()) {
-				ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("dados.dat"));
-				out.writeObject(docentes);
-				out.writeObject(discentes);
-				out.writeObject(producoesCientificas);
-				out.writeObject(cursos);
-				out.writeObject(didaticoAulas);
-				out.writeObject(graduacoes);
-				out.writeObject(posGraduacoes);
-				out.close();
+				try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("dados.dat"));){
+					out.writeObject(docentes);
+					out.writeObject(discentes);
+					out.writeObject(producoesCientificas);
+					out.writeObject(cursos);
+					out.writeObject(didaticoAulas);
+					out.writeObject(graduacoes);
+					out.writeObject(posGraduacoes);
+				}
+				
 			} else {
 
 				EscritaCSV escritor = new EscritaCSV();
