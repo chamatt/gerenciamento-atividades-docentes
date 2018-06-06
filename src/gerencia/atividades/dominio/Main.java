@@ -24,7 +24,6 @@ import gerencia.atividades.utilitarios.Relacionamentos;
 
 public class Main {
 
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		try {
 			Arquivos arquivos = new Arquivos(args);
