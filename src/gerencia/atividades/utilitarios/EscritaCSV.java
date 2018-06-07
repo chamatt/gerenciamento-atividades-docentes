@@ -18,6 +18,7 @@ public class EscritaCSV {
 	public void escreveLinha(String[] propriedades, PrintWriter printer) throws FileNotFoundException, IOException {
 
 		for (int i = 0; i < propriedades.length; i++) {
+			propriedades[i] = propriedades[i].trim();
 			printer.print(propriedades[i]);
 			if (i < propriedades.length - 1)
 				printer.print(";");
@@ -34,9 +35,6 @@ public class EscritaCSV {
 					"Horas Semanais Orientação", "Produções Qualificadas", "Produções Não Qualificadas" };
 			escreveLinha(titulo, printer);
 			Collections.sort(docentes, new PADComparador());
-			/*
-			 * for(Docente c: docentes) { System.out.println(c); }
-			 */
 
 			for (Docente d : docentes) {
 				String[] props = new String[] { d.getNome(), d.getDepartamento(),

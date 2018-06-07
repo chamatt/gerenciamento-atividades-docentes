@@ -82,10 +82,4 @@ public class Arquivos {
 		return readOnly;
 	}
 
-	@Override
-	public String toString() {
-		return "Hello";
-
-	}
-
 }
