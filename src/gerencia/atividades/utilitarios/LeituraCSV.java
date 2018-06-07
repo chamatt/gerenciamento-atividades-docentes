@@ -38,8 +38,9 @@ public class LeituraCSV {
 	private String[] leLinha(Scanner sc) {
 		String all = sc.nextLine();
 		String[] propriedades = all.split(";");
-		for (String string : propriedades) {
-			string = string.trim();
+		
+		for(int i = 0; i < propriedades.length; i++) {
+			propriedades[i] = propriedades[i].trim();
 		}
 		
 		return propriedades;
