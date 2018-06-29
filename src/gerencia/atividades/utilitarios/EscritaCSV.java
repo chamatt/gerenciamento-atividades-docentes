@@ -26,8 +26,8 @@ public class EscritaCSV {
 
 	}
 
-	public void escrevePAD(List<Docente> docentes) throws IOException {
-		File pad = new File("1-pad.csv");
+	public void escrevePAD(List<Docente> docentes, Arquivos arquivos) throws IOException {
+		File pad = new File(arquivos.outputPath + "1-pad.csv");
 
 		try (FileWriter fwriter = new FileWriter(pad); PrintWriter printer = new PrintWriter(fwriter);) {
 			String[] titulo = new String[] { "Docente", "Departamento", "Horas Semanais Aula", "Horas Semestrais Aula",
@@ -50,8 +50,8 @@ public class EscritaCSV {
 
 	}
 
-	public void escreveRHA(List<Curso> cursos) throws IOException {
-		File rha = new File("2-rha.csv");
+	public void escreveRHA(List<Curso> cursos, Arquivos arquivos) throws IOException {
+		File rha = new File(arquivos.outputPath + "2-rha.csv");
 		try (FileWriter fwriter = new FileWriter(rha); PrintWriter printer = new PrintWriter(fwriter);) {
 			String[] titulo = new String[] { "Departamento", "Docente", "Cód. Curso", "Curso",
 					"Horas Semestrais Aula" };
@@ -91,12 +91,11 @@ public class EscritaCSV {
 
 	}
 
-	public void escreveAlocacao(List<DidaticoAula> discs) throws IOException {
-		File alocacao = new File("3-alocacao.csv");
+	public void escreveAlocacao(List<DidaticoAula> discs, Arquivos arquivos) throws IOException {
+		File alocacao = new File(arquivos.outputPath + "3-alocacao.csv");
 		try (FileWriter fwriter = new FileWriter(alocacao); PrintWriter printer = new PrintWriter(fwriter);) {
 			String[] titulo = new String[] { "Docente", "Código", "Nome", "Carga Horária Semestral" };
 			escreveLinha(titulo, printer);
-
 			Collections.sort(discs, new AlocacaoComparador());
 
 			for (DidaticoAula disc : discs) {
@@ -109,8 +108,8 @@ public class EscritaCSV {
 
 	}
 
-	public void escreveDiscentesProGrad(List<Discente> discentes) throws IOException {
-		File alocacao = new File("4-ppg.csv");
+	public void escreveDiscentesProGrad(List<Discente> discentes, Arquivos arquivos) throws IOException {
+		File alocacao = new File(arquivos.outputPath + "4-ppg.csv");
 		try (FileWriter fwriter = new FileWriter(alocacao); PrintWriter printer = new PrintWriter(fwriter);) {
 			String[] titulo = new String[] { "Nome do Programa", "Data de Ingresso", "Matrícula", "Nome" };
 			escreveLinha(titulo, printer);

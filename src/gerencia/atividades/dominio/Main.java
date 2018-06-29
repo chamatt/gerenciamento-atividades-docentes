@@ -17,6 +17,7 @@ import gerencia.atividades.exceptions.CodigoDocenteRepetidoException;
 import gerencia.atividades.exceptions.DataIngressoFuturaException;
 import gerencia.atividades.exceptions.MatriculaDiscenteRepetidaException;
 import gerencia.atividades.exceptions.NivelCursoInconsistenteException;
+import gerencia.atividades.grafica.InterfaceGrafica;
 import gerencia.atividades.utilitarios.Arquivos;
 import gerencia.atividades.utilitarios.EscritaCSV;
 import gerencia.atividades.utilitarios.LeituraCSV;
@@ -26,9 +27,18 @@ public class Main {
 
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
+		Arquivos arquivos = new Arquivos(args);
+		if(args.length >= 1 && args[0].equals("--gui")) {
+			InterfaceGrafica gui = new InterfaceGrafica(arquivos);
+		}
+		else{
+			RodaPrograma(arquivos);
+		}
+	}
+	
+	public static int RodaPrograma(Arquivos arquivos) {
 		try {
-			Arquivos arquivos = new Arquivos(args);
-
+			
 			LeituraCSV leitor;
 			List<Docente> docentes;
 			List<Discente> discentes;
@@ -80,19 +90,21 @@ public class Main {
 				}
 				
 			} else {
-
 				EscritaCSV escritor = new EscritaCSV();
-				escritor.escrevePAD(docentes);
-				escritor.escreveAlocacao(didaticoAulas);
-				escritor.escreveDiscentesProGrad(discentes);
-				escritor.escreveRHA(cursos);
+				escritor.escrevePAD(docentes, arquivos);
+				escritor.escreveAlocacao(didaticoAulas, arquivos);
+				escritor.escreveDiscentesProGrad(discentes, arquivos);
+				escritor.escreveRHA(cursos, arquivos);
 			}
 		} catch (IOException e) {
 			System.out.println("Erro de I/O");
+			e.printStackTrace();
 		} catch (java.text.ParseException p) {
 			System.out.println("Erro de formatação");
+			p.printStackTrace();
 		} catch (ClassNotFoundException cn) {
 			System.out.println("Classe não encontrada");
+			cn.printStackTrace();
 		} catch (CodigoDocenteRepetidoException cd) {
 		} catch (MatriculaDiscenteRepetidaException md) {
 		} catch (CodigoCursoRepetidoException cr) {
@@ -105,6 +117,7 @@ public class Main {
 		} catch (NivelCursoInconsistenteException ni) {
 		} catch (DataIngressoFuturaException df) {
 		}
+		return 1;
 	}
 
 }

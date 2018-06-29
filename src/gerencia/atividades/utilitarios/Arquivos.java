@@ -12,6 +12,7 @@ public class Arquivos {
 	protected File orientacaoPos;
 	protected boolean writeOnly = false;
 	protected boolean readOnly = false;
+	protected String outputPath;
 
 	public Arquivos(String[] args) {
 		for (int i = 0; i < args.length; i++) {
@@ -42,6 +43,7 @@ public class Arquivos {
 			if (args[i].equals("--write-only")) {
 				writeOnly = true;
 			}
+			outputPath = "";
 		}
 
 	}
@@ -56,6 +58,42 @@ public class Arquivos {
 
 	public File getProducaoCientifica() {
 		return producaoCientifica;
+	}
+
+	public void setDocentes(File docentes) {
+		this.docentes = docentes;
+	}
+
+	public void setDiscentes(File discentes) {
+		this.discentes = discentes;
+	}
+
+	public void setProducaoCientifica(File producaoCientifica) {
+		this.producaoCientifica = producaoCientifica;
+	}
+
+	public void setCursos(File cursos) {
+		this.cursos = cursos;
+	}
+
+	public void setDidaticoAulas(File didaticoAulas) {
+		this.didaticoAulas = didaticoAulas;
+	}
+
+	public void setOrientacaoGraducao(File orientacaoGraducao) {
+		this.orientacaoGraducao = orientacaoGraducao;
+	}
+
+	public void setOrientacaoPos(File orientacaoPos) {
+		this.orientacaoPos = orientacaoPos;
+	}
+
+	public void setWriteOnly(boolean writeOnly) {
+		this.writeOnly = writeOnly;
+	}
+
+	public void setReadOnly(boolean readOnly) {
+		this.readOnly = readOnly;
 	}
 
 	public File getCursos() {
@@ -80,6 +118,11 @@ public class Arquivos {
 
 	public boolean isReadOnly() {
 		return readOnly;
+	}
+
+	public void setOutputPath(String caminho) {
+		outputPath = caminho;
+		
 	}
 
 }
