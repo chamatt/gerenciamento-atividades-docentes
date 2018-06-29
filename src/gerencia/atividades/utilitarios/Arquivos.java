@@ -124,5 +124,8 @@ public class Arquivos {
 		outputPath = caminho;
 		
 	}
+	public String getOutputPath() {
+		return outputPath;
+	}
 
 }

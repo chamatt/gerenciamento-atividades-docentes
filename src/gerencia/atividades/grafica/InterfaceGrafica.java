@@ -11,11 +11,20 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
+
+import com.opencsv.CSVReader;
 
 import gerencia.atividades.dominio.Main;
 import gerencia.atividades.utilitarios.Arquivos;
@@ -75,6 +84,8 @@ public class InterfaceGrafica {
 
 
 	private void preparaPainelPrincipal() {
+		
+		
 		
 		GridLayout gridPrincipal = new GridLayout(0,1, 10 ,10);
 		GridLayout gridPainel = new GridLayout(1, 3, 10, 20);
@@ -356,33 +367,68 @@ public class InterfaceGrafica {
 						String caminho = saida.getSelectedFile().toString();
 						caminho = caminho.concat("/");
 						arquivos.setOutputPath(caminho);
-					  	if(Main.RodaPrograma(arquivos) == 1) {
+						if(Main.RodaPrograma(arquivos) == 1) {
 					  		Object[] options = {"Sim!",
 			                "Não, sair!"};
-					  		int n = JOptionPane.showOptionDialog(janela,
-					  				"Arquivos gerados com sucesso em: " + caminho + NL + "Gostaria de gerar outro relatório?",
-					  				"Relatório gerado com sucesso",
-					  				JOptionPane.YES_NO_OPTION,
-					  				JOptionPane.QUESTION_MESSAGE,
-					  				null,     //do not use a custom Icon
-					  				options,  //the titles of buttons
-					  				options[0]); //default button title
-					  		if(n == JOptionPane.YES_OPTION) {
-					  			arquivoNomeDocentes.setText(nomepadrao);
-					  			arquivoNomeDiscentes.setText(nomepadrao);
-					  			arquivoNomeProducoesCientificas.setText(nomepadrao);
-					  			arquivoNomeCursos.setText(nomepadrao);
-					  			arquivoNomeAulas.setText(nomepadrao);
-					  			arquivoNomeOrientacaoGraduacao.setText(nomepadrao);
-					  			arquivoNomeOrientacaoPos.setText(nomepadrao);
-					  			selectIsSetCount = 0;
-					  			
-					  			
-					  			
-					  		}
-					  		else {
-					  			System.exit(0);
-					  		}
+					  		
+					  		JTable table = new JTable();
+					  		
+					  	    try {
+					  	    	Object[][] tudodatable = readCsv(arquivos.getOutputPath() + "1-pad.csv");
+					  	    	table.setModel(new DefaultTableModel(
+								    tudodatable,
+								    (String[]) tudodatable[0]
+								));
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+					  	    
+					  	    janela.setVisible(false);
+					  	    
+					  	    
+					  	 	
+					  	    JPanel painelTabela = new JPanel();
+					  	    JPanel painelzao = new JPanel( new FlowLayout() );
+					  	    painelTabela.setLayout( new GridLayout(1, 3, 10, 20) );
+					  	 	painelTabela.add(new JScrollPane(table));
+					  	 	
+					  	 	painelPrincipal.add(painelTabela);
+					  	    painelzao.add(painelPrincipal);
+					  	 	painelzao.add(painelTabela);
+					  	 	
+					  	    JFrame janela2 = new JFrame();
+					  	    janela2.add(painelzao);
+					  	 	janela2.setSize(800, 511);
+					  	 	janela2.setMinimumSize(new Dimension(700, 450));
+					  	 	janela2.pack();
+//						    janela.setResizable(false);
+					  	 	janela2.setVisible(true);
+					  	 	
+//					  		int n = JOptionPane.showOptionDialog(janela,
+//					  				"Arquivos gerados com sucesso em: " + caminho + NL + "Gostaria de gerar outro relatório?",
+//					  				"Relatório gerado com sucesso",
+//					  				JOptionPane.YES_NO_OPTION,
+//					  				JOptionPane.QUESTION_MESSAGE,
+//					  				null,     //do not use a custom Icon
+//					  				options,  //the titles of buttons
+//					  				options[0]); //default button title
+//					  		if(n == JOptionPane.YES_OPTION) {
+//					  			arquivoNomeDocentes.setText(nomepadrao);
+//					  			arquivoNomeDiscentes.setText(nomepadrao);
+//					  			arquivoNomeProducoesCientificas.setText(nomepadrao);
+//					  			arquivoNomeCursos.setText(nomepadrao);
+//					  			arquivoNomeAulas.setText(nomepadrao);
+//					  			arquivoNomeOrientacaoGraduacao.setText(nomepadrao);
+//					  			arquivoNomeOrientacaoPos.setText(nomepadrao);
+//					  			selectIsSetCount = 0;
+//					  			
+//					  			
+//					  			
+//					  		}
+//					  		else {
+//					  			System.exit(0);
+//					  		}
 					  	}
 						selectIsSetCount++;
 
@@ -420,6 +466,17 @@ public class InterfaceGrafica {
 	
 	private void setPainelStyle(JPanel panel) {
 		panel.setBackground(new Color(255,255,255,200));
+	}
+		
+	
+	static Object[][] readCsv(String file) throws IOException {
+	    List<Object[]> lines = new ArrayList<>();
+	    try (BufferedReader r = new BufferedReader(new FileReader(file))) {
+	        String line;
+	        while ((line = r.readLine()) != null)
+	            lines.add(line.split(";"));
+	    }
+	    return lines.toArray(new Object[lines.size()][]);
 	}
 	
 }
