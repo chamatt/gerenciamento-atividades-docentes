@@ -371,64 +371,135 @@ public class InterfaceGrafica {
 					  		Object[] options = {"Sim!",
 			                "Não, sair!"};
 					  		
-					  		JTable table = new JTable();
-					  		
-					  	    try {
-					  	    	Object[][] tudodatable = readCsv(arquivos.getOutputPath() + "1-pad.csv");
-					  	    	table.setModel(new DefaultTableModel(
-								    tudodatable,
-								    (String[]) tudodatable[0]
-								));
-							} catch (IOException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-					  	    
-					  	    janela.setVisible(false);
-					  	    
-					  	    
+//					  		JTable pad_tabela = new JTable();
+//					  		JTable rha_tabela = new JTable();
+//					  		JTable ppg_tabela = new JTable();
+//					  		JTable alocacao_tabela = new JTable();
+//					  		
+//					  		
+//					  	    try {
+//					  	    	Object[][] tudodapad = readCsv(arquivos.getOutputPath() + "1-pad.csv");
+//					  	    	pad_tabela.setModel(new DefaultTableModel(
+//					  	    			tudodapad,
+//								    (String[]) tudodapad[0]
+//								));
+//					  	    	
+//					  	    	Object[][] tudodarha = readCsv(arquivos.getOutputPath() + "2-rha.csv");
+//					  	    	rha_tabela.setModel(new DefaultTableModel(
+//					  	    			tudodarha,
+//								    (String[]) tudodarha[0]
+//								));
+//					  	    	
+//					  	    	
+//					  	    	Object[][] tudodappg = readCsv(arquivos.getOutputPath() + "3-ppg.csv");
+//					  	    	ppg_tabela.setModel(new DefaultTableModel(
+//					  	    			tudodappg,
+//								    (String[]) tudodappg[0]
+//								));
+//					  	    	
+//					  	    	Object[][] tudodaalocacao = readCsv(arquivos.getOutputPath() + "4-alocacao.csv");
+//					  	    	alocacao_tabela.setModel(new DefaultTableModel(
+//					  	    			tudodaalocacao,
+//								    (String[]) tudodaalocacao[0]
+//								));
+//					  	    	
+//					  	    	
+//							} catch (IOException e1) {
+//								// TODO Auto-generated catch block
+//								e1.printStackTrace();
+//							}
+//					  	    
+//					  	    janela.setVisible(false);
+//					  	    
+//					  	    
+//					  	 	
+//					  	    JPanel painelTabela = new JPanel();
+//					  	    JPanel painelzao = new JPanel( new FlowLayout() );
+//					  	    
+//					  	    JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+//							painelTabela.add(tabbedPane);
+//					  	    
+//					  	    painelTabela.setLayout( new GridLayout(1, 3, 10, 20) );
+//					  	 	
+//					  	    
+//					  	    
+//					  	    JPanel panel_pad = new JPanel();
+//					  	    JScrollPane scrollPane_1 = new JScrollPane(pad_tabela);
+//					  	    panel_pad.add(scrollPane_1);
+//					  	    tabbedPane.addTab("PAD", null, pad_tabela, null);
+//							panel_pad.setLayout(null);
+//							scrollPane_1.setViewportView(panel_pad);
+//							
+//							JPanel panel_rha = new JPanel();
+//							JScrollPane scrollPane_2 = new JScrollPane(pad_tabela);
+//					  	    panel_rha.add(scrollPane_2);
+//					  	    tabbedPane.addTab("PAD", null, rha_tabela, null);
+//							panel_rha.setLayout(null);
+//							scrollPane_2.setViewportView(panel_rha);
+//							
+//							JPanel panel_ppg = new JPanel();
+//							JScrollPane scrollPane_3 = new JScrollPane(pad_tabela);
+//					  	    panel_ppg.add(scrollPane_3);
+//					  	    tabbedPane.addTab("PAD", null, ppg_tabela, null);
+//							panel_ppg.setLayout(null);
+//							scrollPane_3.setViewportView(panel_ppg);
+//							
+//							JPanel panel_alocacao = new JPanel();
+//							JScrollPane scrollPane_4 = new JScrollPane(pad_tabela);
+//					  	    panel_alocacao.add(scrollPane_4);
+//					  	    tabbedPane.addTab("PAD", null, alocacao_tabela, null);
+//							panel_alocacao.setLayout(null);
+//							scrollPane_4.setViewportView(panel_alocacao);
+//					  	    
+//					  	    
+//					  	    
+//					  	    painelTabela.add(panel_pad);
+//					  	    painelTabela.add(panel_rha);
+//					  	    painelTabela.add(panel_ppg);
+//					  	    painelTabela.add(panel_alocacao);
+//					  	 	
+//					  	 	
+//							
+//							
+//							
+//					  	 	
+//					  	 	
+//					  	 	painelPrincipal.add(painelTabela);
+//					  	    painelzao.add(painelPrincipal);
+//					  	 	painelzao.add(painelTabela);
+//					  	 	
+//					  	    JFrame janela2 = new JFrame();
+//					  	    janela2.add(painelzao);
+//					  	 	janela2.setSize(800, 511);
+//					  	 	janela2.setMinimumSize(new Dimension(700, 450));
+//					  	 	janela2.pack();
+////						    janela.setResizable(false);
+//					  	 	janela2.setVisible(true);
 					  	 	
-					  	    JPanel painelTabela = new JPanel();
-					  	    JPanel painelzao = new JPanel( new FlowLayout() );
-					  	    painelTabela.setLayout( new GridLayout(1, 3, 10, 20) );
-					  	 	painelTabela.add(new JScrollPane(table));
-					  	 	
-					  	 	painelPrincipal.add(painelTabela);
-					  	    painelzao.add(painelPrincipal);
-					  	 	painelzao.add(painelTabela);
-					  	 	
-					  	    JFrame janela2 = new JFrame();
-					  	    janela2.add(painelzao);
-					  	 	janela2.setSize(800, 511);
-					  	 	janela2.setMinimumSize(new Dimension(700, 450));
-					  	 	janela2.pack();
-//						    janela.setResizable(false);
-					  	 	janela2.setVisible(true);
-					  	 	
-//					  		int n = JOptionPane.showOptionDialog(janela,
-//					  				"Arquivos gerados com sucesso em: " + caminho + NL + "Gostaria de gerar outro relatório?",
-//					  				"Relatório gerado com sucesso",
-//					  				JOptionPane.YES_NO_OPTION,
-//					  				JOptionPane.QUESTION_MESSAGE,
-//					  				null,     //do not use a custom Icon
-//					  				options,  //the titles of buttons
-//					  				options[0]); //default button title
-//					  		if(n == JOptionPane.YES_OPTION) {
-//					  			arquivoNomeDocentes.setText(nomepadrao);
-//					  			arquivoNomeDiscentes.setText(nomepadrao);
-//					  			arquivoNomeProducoesCientificas.setText(nomepadrao);
-//					  			arquivoNomeCursos.setText(nomepadrao);
-//					  			arquivoNomeAulas.setText(nomepadrao);
-//					  			arquivoNomeOrientacaoGraduacao.setText(nomepadrao);
-//					  			arquivoNomeOrientacaoPos.setText(nomepadrao);
-//					  			selectIsSetCount = 0;
-//					  			
-//					  			
-//					  			
-//					  		}
-//					  		else {
-//					  			System.exit(0);
-//					  		}
+					  		int n = JOptionPane.showOptionDialog(janela,
+					  				"Arquivos gerados com sucesso em: " + caminho + NL + "Gostaria de gerar outro relatório?",
+					  				"Relatório gerado com sucesso",
+					  				JOptionPane.YES_NO_OPTION,
+					  				JOptionPane.QUESTION_MESSAGE,
+					  				null,     //do not use a custom Icon
+					  				options,  //the titles of buttons
+					  				options[0]); //default button title
+					  		if(n == JOptionPane.YES_OPTION) {
+					  			arquivoNomeDocentes.setText(nomepadrao);
+					  			arquivoNomeDiscentes.setText(nomepadrao);
+					  			arquivoNomeProducoesCientificas.setText(nomepadrao);
+					  			arquivoNomeCursos.setText(nomepadrao);
+					  			arquivoNomeAulas.setText(nomepadrao);
+					  			arquivoNomeOrientacaoGraduacao.setText(nomepadrao);
+					  			arquivoNomeOrientacaoPos.setText(nomepadrao);
+					  			selectIsSetCount = 0;
+					  			
+					  			
+					  			
+					  		}
+					  		else {
+					  			System.exit(0);
+					  		}
 					  	}
 						selectIsSetCount++;
 
